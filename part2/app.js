@@ -4,12 +4,12 @@ require('dotenv').config();
 
 const app = express();
 // Route to return users as JSON
-app.get('/api/user', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
-    const [books] = await db.execute('SELECT * FROM books');
-    res.json(books);
+    const [user] = await db.execute('SELECT * FROM UserS');
+    res.json(user);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch books' });
+    res.status(500).json({ error: 'Failed to fetch users' });
   }
 });
 // Middleware
