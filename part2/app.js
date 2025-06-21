@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 // Route to return users as JSON
-app.get('/', async (req, res) => {
+app.get('/api/users', async (req, res) => {
   try {
     const [user] = await db.execute('SELECT * FROM Users');
     res.json(user);
@@ -20,6 +20,7 @@ app.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch users' });
   }
 });
+
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
