@@ -76,7 +76,7 @@
             message.value = '';
           }
         }
-//////////////
+////////////// add logout function
        async function logout() {
           try {
             const res = await fetch('/api/users/logout', {
@@ -89,7 +89,6 @@
             message.value = '';
           }
         }
-
         onMounted(() => {
           loadWalkRequests();
         });
@@ -98,7 +97,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout
         };
       }
     }).mount('#app');
