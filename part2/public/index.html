@@ -55,7 +55,7 @@
       },
       async mounted() {
         try {
-          const response = await fetch('https://localhost:');
+          const response = await fetch('https://localhost:3000/api/users');
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
           this.users = data;
