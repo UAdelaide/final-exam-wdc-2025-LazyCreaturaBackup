@@ -55,7 +55,7 @@
       },
       async mounted() {
         try {
-          const response = await fetch('/api');
+          const response = await fetch('/http://localhost:8080/api/users/login');
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
           this.users = data;
