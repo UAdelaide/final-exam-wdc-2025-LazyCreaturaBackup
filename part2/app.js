@@ -44,6 +44,10 @@ app.use(session({
         maxAge: 24 * 60 * 1000 // 24 minutes
     }
 }));
+// Simple logout route that redirects to login
+app.get('/logout', (req, res) => {
+  res.redirect('/');
+});
 
 // Export the app instead of listening here
 module.exports = app;
