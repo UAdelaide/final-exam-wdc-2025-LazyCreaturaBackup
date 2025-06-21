@@ -78,18 +78,11 @@
         }
 
         async function logout() {
-          try {
-            const res = await fetch('/api/users/logout', {
-              method: 'POST'
-            });
-            if (!res.ok) throw new Error('Failed to logout');
-            window.location.href = '/';
-          } catch (err) {
-            error.value = err.message;
-            message.value = '';
-          }
+          // Clear session storage
+          sessionStorage.removeItem('loggedInUser');
+          // Redirect to login page
+          window.location.href = '/';
         }
-
         onMounted(() => {
           loadWalkRequests();
         });
