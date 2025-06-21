@@ -6,6 +6,11 @@ const db = require('./models/db');
 const app = express();
 
 
+// Route to serve index.html first
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Route to return users as JSON
 app.get('/', async (req, res) => {
   try {
