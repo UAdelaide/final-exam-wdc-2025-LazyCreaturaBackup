@@ -92,7 +92,21 @@
         const dogs = ref([]);
         const message = ref('');
         const error = ref('');
-
+        // add load
+        async function loadDogs() {
+            const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+            if (!loggedInUser || !loggedInUser.userId) {
+                error.value = "Could not identify the logged-in user.";
+                return;
+            }
+            try {
+                const res = await fetch(`/api/dogs/owner/${loggedInUser.userId}`);
+                if (!res.ok) throw new Error('Failed to load dogs');
+                dogs.value = await res.json();
+            } catch (err) {
+                error.value = err.message;
+            }
+        }
         async function loadWalks() {
           try {
             const res = await fetch('/api/walks');
