@@ -32,7 +32,7 @@ const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
-//question 
+//question 14
 // Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET || 'a_very_secret_key',
