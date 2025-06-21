@@ -67,7 +67,12 @@
         login() {
           const user = this.users.find(u => u.username === this.username && u.password_hash === this.password);
           if (user) {
-            sessionStorage.setItem('loggedInUser', JSON.stringify({ username: user.username, role: user.role }));
+            //adjust from quest 13
+           sessionStorage.setItem('loggedInUser', JSON.stringify({
+              userId: user.user_id,
+              username: user.username,
+              role: user.role
+            }));
             if (user.role === 'owner') {
               window.location.href = 'owner-dashboard.html';
             } else {
