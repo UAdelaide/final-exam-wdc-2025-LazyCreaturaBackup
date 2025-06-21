@@ -35,7 +35,7 @@ app.use('/api/users', userRoutes);
 //question 14
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'a_very_secret_key',
+    secret: process.env.SESSION_SECRET || 'secret_key',
     resave: false,
     saveUninitialized: false,
     cookie: {
