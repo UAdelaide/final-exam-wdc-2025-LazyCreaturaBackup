@@ -6,7 +6,7 @@ const app = express();
 // Route to return users as JSON
 app.get('/', async (req, res) => {
   try {
-    const [user] = await db.execute('SELECT * FROM UserS');
+    const [user] = await db.execute('SELECT * FROM Users');
     res.json(user);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch users' });
