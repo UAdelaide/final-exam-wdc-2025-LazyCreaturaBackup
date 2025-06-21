@@ -4,6 +4,8 @@ require('dotenv').config();
 const db = require('./models/db');
 
 const app = express();
+
+
 // Route to return users as JSON
 app.get('/', async (req, res) => {
   try {
