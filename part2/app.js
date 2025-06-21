@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-
 require('dotenv').config();
 const db = require('./models/db');
 
@@ -33,6 +32,18 @@ const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
+//question 
+// Session configuration
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'a_very_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+}));
 
 // Export the app instead of listening here
 module.exports = app;
